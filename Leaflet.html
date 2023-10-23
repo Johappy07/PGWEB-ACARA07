@@ -26,23 +26,23 @@
       crossorigin=""
     ></script>
     <script>
-      var map = L.map("map").setView([51.505, -0.09], 13);
+      var map = L.map("map").setView([-7.770154, 110.377847], 10);
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
+        maxZoom: 20,
         attribution:
           '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       }).addTo(map);
       // Tambah fitur Titik
-      var marker = L.marker([-7.774534, 110.380450]).addTo(map);
-      marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+      var marker = L.marker([-7.77009, 110.377825]).addTo(map);
+      marker.bindPopup("Area Bahaya Gunung Merapi").openPopup();
 
       // Array Marker
       var locations = [
-        ["fasiitas_kesehatan_1", -7.905594, 110.320255],
-        ["fasiitas_kesehatan_2", -7.903649, 110.321896],
-        ["fasiitas_kesehatan_3", -7.902448, 110.321231],
-        ["fasiitas_kesehatan_4", -7.892756, 110.338311],
-        ["fasiitas_kesehatan_5", -7.887018, 110.330415],
+        ["fasiitas kesehatan 1", -7.777345, 110.377595],
+        ["fasiitas kesehatan 2", -7.770571, 110.374017],
+        ["fasiitas kesehatan 3", -7.768012, 110.372912],
+        ["fasiitas kesehatan 4", -7.778201, 110.386875],
+        ["fasiitas kesehatan 5", -7.780592, 110.374435],
       ];
       for (var i = 0; i < locations.length; i++) {
         marker = new L.marker([locations[i][1], locations[i][2]])
@@ -51,20 +51,22 @@
       }
 
       // Tambah fitur Circle
-      var circle = L.circle([-7.774534, 110.380450], {
+      var circle = L.circle([-7.541699, 110.445986], {
         color: 'red',
         fillColor: '#f03',
         fillOpacity: 0.5,
-        radius: 500
+        radius: 10000
     }).addTo(map);
-    circle.bindPopup("I am a circle.");
-    // Tambah fitur Poligon
+    circle.bindPopup("Area Merah Gunung Merapi");
+
+    // Tambah data poligon
     var polygon = L.polygon([
-    [-7.774534, 110.380450],
-    [-7.770836, 110.384304],
-    [-7.771017, 110.374654]
-]).addTo(map);
-polygon.bindPopup("I am a polygon.");
+    [-7.775995, 110.37426],
+    [-7.775426, 110.372783],
+    [-7.773226, 110.373716],
+    [-7.773842, 110.375218]
+    ]).addTo(map);
+polygon.bindPopup("Area Sekolah Vokasi Universitas Gadjah Mada.");
 
 var popup = L.popup();
 
@@ -74,7 +76,6 @@ function onMapClick(e) {
         .setContent("You clicked the map at " + e.latlng.toString())
         .openOn(map);
 }
-
 map.on('click', onMapClick);
     </script>
 </body>
